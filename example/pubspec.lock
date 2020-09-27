@@ -234,24 +234,24 @@ packages:
   video_player:
     dependency: transitive
     description:
-      name: video_player
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.10.9+1"
+      path: "../../flutter-dev-plugins/packages/video_player/video_player"
+      relative: true
+    source: path
+    version: "0.11.0"
   video_player_platform_interface:
     dependency: transitive
     description:
       name: video_player_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.5"
+    version: "2.2.0"
   video_player_web:
     dependency: transitive
     description:
       name: video_player_web
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.2+1"
+    version: "0.1.4"
   video_thumbnail:
     dependency: transitive
     description:
