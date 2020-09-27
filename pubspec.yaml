@@ -16,7 +16,7 @@ dependencies:
     git:
       url: https://github.com/litt-global/flutter-dev-plugins.git
       path: packages/video_player/video_player
-  flutter_ffmpeg: ^0.2.10
+  flutter_ffmpeg: ^0.3.0
   video_thumbnail: ^0.2.1
   path_provider: ^1.6.7
   intl: ^0.16.1
