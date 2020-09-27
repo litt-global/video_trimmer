@@ -240,7 +240,7 @@ class Trimmer {
 
     _command += '"$_outputPath"';
 
-    print('FFMEPG ' + _command);
+    print('FFMPEG ' + _command);
 
     await _flutterFFmpeg.execute(_command).whenComplete(() {
       print('Got value');
