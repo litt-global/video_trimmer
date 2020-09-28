@@ -234,9 +234,11 @@ packages:
   video_player:
     dependency: transitive
     description:
-      path: "../../flutter-dev-plugins/packages/video_player/video_player"
-      relative: true
-    source: path
+      path: "packages/video_player/video_player"
+      ref: HEAD
+      resolved-ref: b307843634b0d4705e4c1a72098a1c5d7b56f1d2
+      url: "https://github.com/litt-global/flutter-dev-plugins.git"
+    source: git
     version: "0.11.0"
   video_player_platform_interface:
     dependency: transitive
