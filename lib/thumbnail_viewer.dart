@@ -59,13 +59,21 @@ class ThumbnailViewer extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: snapshot.data.length,
               itemBuilder: (context, index) {
+                var imageBytes = _imageBytes[index];
+
+                if (imageBytes == null && index > 0) {
+                  imageBytes = _imageBytes[index - 1];
+                }
+
                 return Container(
                   height: thumbnailHeight,
                   width: thumbnailHeight,
-                  child: Image(
-                    image: MemoryImage(_imageBytes[index]),
-                    fit: fit,
-                  ),
+                  child: imageBytes == null
+                      ? Container()
+                      : Image(
+                          image: MemoryImage(imageBytes),
+                          fit: fit,
+                        ),
                 );
               });
         } else {
