@@ -261,8 +261,8 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
       maxLengthPixels = _thumbnailViewerW;
     }
 
-    _startPos = Offset(_videoStartPos / _videoDuration * maxLengthPixels, 0);
-    _endPos = Offset(_videoEndPos / _videoDuration * maxLengthPixels, _thumbnailViewerH);
+    _startPos = Offset(_videoStartPos / _videoDuration * _thumbnailViewerW, 0);
+    _endPos = Offset(_videoEndPos / _videoDuration * _thumbnailViewerW, _thumbnailViewerH);
 
     // Defining the tween points
     _linearTween = Tween(begin: _startPos.dx, end: _endPos.dx);
