@@ -38,6 +38,7 @@ class ThumbnailViewer extends StatelessWidget {
       _bytes = await VideoThumbnail.thumbnailData(
         video: _videoPath,
         imageFormat: ImageFormat.JPEG,
+        maxWidth: 160,
         timeMs: (_eachPart * i).toInt(),
         quality: quality,
       );
