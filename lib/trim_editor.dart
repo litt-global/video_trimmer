@@ -323,8 +323,6 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
 
       if (widget.videoEndPos == 0) {
         _videoEndPos = fraction != null ? _videoDuration.toDouble() * fraction : _videoDuration.toDouble();
-
-        widget.onChangeEnd(_videoEndPos);
       }
 
       final ThumbnailViewer _thumbnailWidget = ThumbnailViewer(
@@ -334,6 +332,9 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
         thumbnailHeight: _thumbnailViewerH,
         numberOfThumbnails: _numberOfThumbnails,
         quality: widget.thumbnailQuality,
+        onThumbnailsGenerated: () {
+          widget.onChangeEnd(_videoEndPos);
+        },
       );
       thumbnailWidget = _thumbnailWidget;
     }

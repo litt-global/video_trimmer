@@ -10,6 +10,7 @@ class ThumbnailViewer extends StatelessWidget {
   final fit;
   final int numberOfThumbnails;
   final int quality;
+  final Function onThumbnailsGenerated;
 
   /// For showing the thumbnails generated from the video,
   /// like a frame by frame preview
@@ -19,6 +20,7 @@ class ThumbnailViewer extends StatelessWidget {
     @required this.thumbnailHeight,
     @required this.numberOfThumbnails,
     @required this.fit,
+    @required this.onThumbnailsGenerated,
     this.quality = 75,
   })  : assert(videoFile != null),
         assert(videoDuration != null),
@@ -38,7 +40,7 @@ class ThumbnailViewer extends StatelessWidget {
       _bytes = await VideoThumbnail.thumbnailData(
         video: _videoPath,
         imageFormat: ImageFormat.JPEG,
-        maxWidth: 160,
+        maxWidth: 128,
         timeMs: (_eachPart * i).toInt(),
         quality: quality,
       );
@@ -47,6 +49,8 @@ class ThumbnailViewer extends StatelessWidget {
 
       yield _byteList;
     }
+
+    onThumbnailsGenerated();
   }
 
   @override
