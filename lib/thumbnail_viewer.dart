@@ -15,18 +15,15 @@ class ThumbnailViewer extends StatelessWidget {
   /// For showing the thumbnails generated from the video,
   /// like a frame by frame preview
   ThumbnailViewer({
-    @required this.videoFile,
-    @required this.videoDuration,
-    @required this.thumbnailHeight,
-    @required this.numberOfThumbnails,
-    @required this.fit,
-    @required this.onThumbnailsGenerated,
+    Key? key,
+    required this.videoFile,
+    required this.videoDuration,
+    required this.thumbnailHeight,
+    required this.numberOfThumbnails,
+    required this.fit,
+    required this.onThumbnailsGenerated,
     this.quality = 75,
-  })  : assert(videoFile != null),
-        assert(videoDuration != null),
-        assert(thumbnailHeight != null),
-        assert(numberOfThumbnails != null),
-        assert(quality != null);
+  }) : super(key: key);
 
   Stream<List<Uint8List>> generateThumbnail() async* {
     final String _videoPath = videoFile.path;
@@ -36,7 +33,7 @@ class ThumbnailViewer extends StatelessWidget {
     List<Uint8List> _byteList = [];
 
     for (int i = 1; i <= numberOfThumbnails; i++) {
-      Uint8List _bytes;
+      Uint8List? _bytes;
       try {
         _bytes = await VideoThumbnail.thumbnailData(
           video: _videoPath,
@@ -46,8 +43,7 @@ class ThumbnailViewer extends StatelessWidget {
           quality: quality,
         );
       } catch (_) {}
-
-      _byteList.add(_bytes);
+      if (_bytes != null) _byteList.add(_bytes);
 
       yield _byteList;
     }
@@ -61,10 +57,10 @@ class ThumbnailViewer extends StatelessWidget {
       stream: generateThumbnail(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Uint8List> _imageBytes = snapshot.data;
+          List<Uint8List>? _imageBytes = snapshot.data as List<Uint8List>;
           return ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: snapshot.data.length,
+              itemCount: _imageBytes.length,
               itemBuilder: (context, index) {
                 var imageBytes = _imageBytes[index];
 
