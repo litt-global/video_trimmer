@@ -1,10 +1,10 @@
 library video_trimmer;
 
 import 'dart:io';
+import 'package:ffmpeg_kit_flutter_min_gpl/ffmpeg_kit.dart';
 import 'package:path/path.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
@@ -21,7 +21,7 @@ import 'package:video_trimmer/trim_editor.dart';
 class Trimmer {
   static late File currentVideoFile;
 
-  final FlutterFFmpeg _flutterFFmpeg = new FlutterFFmpeg();
+  // final FlutterFFmpeg _flutterFFmpeg = new FlutterFFmpeg();
 
   /// Loads a video using the path provided.
   ///
@@ -242,7 +242,7 @@ class Trimmer {
 
     print('FFMPEG ' + _command);
 
-    await _flutterFFmpeg.execute(_command).whenComplete(() {
+    await FFmpegKit.execute(_command).whenComplete(() {
       print('Got value');
       debugPrint('Video successfuly saved');
       // _resultString = 'Video successfuly saved';
