@@ -25,12 +25,12 @@ class ThumbnailViewer extends StatelessWidget {
     this.quality = 75,
   }) : super(key: key);
 
-  Stream<List<Uint8List>> generateThumbnail() async* {
+  Stream<List<Uint8List?>> generateThumbnail() async* {
     final String _videoPath = videoFile.path;
 
     double _eachPart = videoDuration / numberOfThumbnails;
 
-    List<Uint8List> _byteList = [];
+    List<Uint8List?> _byteList = [];
 
     for (int i = 1; i <= numberOfThumbnails; i++) {
       Uint8List? _bytes;
@@ -43,7 +43,8 @@ class ThumbnailViewer extends StatelessWidget {
           quality: quality,
         );
       } catch (_) {}
-      if (_bytes != null) _byteList.add(_bytes);
+
+      _byteList.add(_bytes);
 
       yield _byteList;
     }
@@ -57,7 +58,7 @@ class ThumbnailViewer extends StatelessWidget {
       stream: generateThumbnail(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          List<Uint8List>? _imageBytes = snapshot.data as List<Uint8List>;
+          List<Uint8List?> _imageBytes = snapshot.data as List<Uint8List?>;
           return ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: _imageBytes.length,
