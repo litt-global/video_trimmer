@@ -306,7 +306,7 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
         }
       });
 
-      videoPlayerController?.setVolume(1.0);
+      // videoPlayerController?.setVolume(1.0);
       _videoDuration = videoPlayerController?.value.duration.inMilliseconds ?? 0;
       print(_videoFile?.path);
 
@@ -509,7 +509,7 @@ class _TrimEditorState extends State<TrimEditor> with TickerProviderStateMixin {
               startPos: _startPos,
               endPos: _endPos,
               scrubberAnimationDx: _scrubberAnimation!.value,
-              circleSize: _circleSize??0,
+              circleSize: _circleSize ?? 0,
               circlePaintColor: widget.circlePaintColor,
               borderPaintColor: widget.borderPaintColor,
               scrubberPaintColor: widget.scrubberPaintColor,
