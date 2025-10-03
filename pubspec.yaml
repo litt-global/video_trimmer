@@ -9,12 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
-  ffmpeg_kit_flutter: 4.5.1
+
+  ffmpeg_kit_flutter_new: ^3.0.0
   video_player: ^2.2.7
   video_thumbnail: 0.5.3
   path_provider: ^2.0.7
-  intl: ^0.19.0
+  intl: ^0.20.2
   path: ^1.8.0
 
 dev_dependencies:
